@@ -9,8 +9,6 @@ namespace TestProject
 	{
 		public void DisplayCurrentGridState(GridState state)
 		{
-			Console.Clear();
-
 			int xSize = state.Grid.GetLength(0);
 			int ySize = state.Grid.GetLength(1);
 
