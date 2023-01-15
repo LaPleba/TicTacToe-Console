@@ -2,7 +2,7 @@
 
 namespace TestProject.Models.Enums
 {
-	public enum GridIcons
+	public enum GridIcon
 	{
 		None,
 		Cross,
