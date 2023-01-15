@@ -15,7 +15,7 @@ namespace TestProject
 			{
 				for(int x = 0; x < xSize; x++)
                 {
-					gridState.Grid[x, y] = GridIcons.None;
+					gridState.Grid[x, y] = GridIcon.None;
 				}
 			}
 

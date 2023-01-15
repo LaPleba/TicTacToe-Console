@@ -4,12 +4,12 @@ namespace TestProject.Models;
 
 public class GridState
 { 
-    public GridIcons[,] Grid { get; set; }
+    public GridIcon[,] Grid { get; set; }
 
     public bool IsPlayer1Playing { get; set; } = true;
 
     public GridState(int xSize, int ySize)
     {
-        Grid = new GridIcons[3, 3];
+        Grid = new GridIcon[3, 3];
     }
 }

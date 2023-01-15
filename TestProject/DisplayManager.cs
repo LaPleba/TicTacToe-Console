@@ -55,13 +55,13 @@ namespace TestProject
 
 					switch(state.Grid[x, y])
 					{
-						case GridIcons.None:
+						case GridIcon.None:
 							rowString += "   |";
 							break;
-						case GridIcons.Cross:
+						case GridIcon.Cross:
 							rowString += " X |";
 							break;
-						case GridIcons.Circle:
+						case GridIcon.Circle:
 							rowString += " O |";
 							break;
 						default:
