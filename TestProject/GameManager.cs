@@ -64,6 +64,12 @@ namespace TestProject
 
 				(int, int) coords = ((int)letterCoord - 65, numberCoord - 1);
 
+				if (state.Grid[coords.Item1, coords.Item2] != GridIcons.None)
+				{
+					ShowCurrentGameState("Error: You cannot select a square that already has a nought or cross", state);
+					continue;
+				}
+
 				try
 				{
                     state.Grid[coords.Item1, coords.Item2] = state.IsPlayer1Playing ? GridIcons.Cross : GridIcons.Circle;
@@ -101,7 +107,7 @@ namespace TestProject
 		private void ShowCurrentGameState(string message, GridState state)
 		{
 			Console.WriteLine(message);
-			displayManager.DisplayCurrentGridState(state);
+			ShowCurrentGameState(state);
 		}
 
 		private void ShowCurrentGameState(GridState state)
