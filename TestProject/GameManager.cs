@@ -81,7 +81,7 @@ namespace TestProject
                     continue;
                 }
 
-                gridAtCoords = state.IsPlayer1Playing ? GridIcon.Cross : GridIcon.Circle;
+                state.Grid[coords.Item1, coords.Item2] = state.IsPlayer1Playing ? GridIcon.Cross : GridIcon.Circle;
 
                 if (CheckForWinner(state))
                 {
