@@ -53,7 +53,7 @@ namespace TestProject
 						rowFinaliser += "+---";
 					}
 
-					switch(state.Grid[x, y])
+					switch(state.Grid[x, ySize - y - 1])
 					{
 						case GridIcon.None:
 							rowString += "   |";
