@@ -83,7 +83,7 @@ namespace TestProject
 
                 gridAtCoords = state.IsPlayer1Playing ? GridIcon.Cross : GridIcon.Circle;
 
-                if (CheckForWinner(state))
+                if (CheckForWinner(state, coords))
                 {
                     EndGame(state);
                     break;
@@ -123,7 +123,9 @@ namespace TestProject
 
         private bool CheckForWinner(GridState state, (int, int) coordinates)
         {
-            if (CheckXAxisForWinner(state, coordinates.Item2) || CheckYAxisForWinner(state) || CheckDiagonalsForWinner(state))
+            if (CheckXAxisForWinner(state, coordinates.Item1) ||
+                CheckYAxisForWinner(state, coordinates.Item2) ||
+                CheckDiagonalsForWinner(state))
             {
                 return true;
             }
@@ -168,41 +170,66 @@ namespace TestProject
             return false;
         }
 
-        private bool CheckDiagonalsForWinner(GridState state)
+        private bool CheckDiagonalsForWinner(GridState state, (int, int) coords)
         {
-            if (state.Grid.GetLength(0) != state.Grid.GetLength(1))
+            if (state.DiagonalLength is null)
             {
                 return false;
             }
+            int xyMax = state.Grid.GetLength(0); //For there to be a diagonal, x and y max must be the same
 
-            int diagonalLength = state.Grid.GetLength(1);
-
-            for (int i = 0; i < diagonalLength; i++)
+            if(coords.Item1 == coords.Item2 && (coords.Item1 == 0 || coords.Item1 == xyMax))
             {
-                GridIcon gridIcon = state.Grid[i, i];
-
-                int numberOfNoughts = 0, numberOfCrosses = 0;
-
-                UpdateNoughtsAndCrossesCount(gridIcon, ref numberOfNoughts, ref numberOfCrosses);
-
-                if (numberOfCrosses == diagonalLength || numberOfNoughts == diagonalLength)
-                {
-                    return true;
-                }
+                return CheckLeftDiagonal(state);
             }
 
-            for (int i = state.Grid.GetLength(0) - 1; i >= 0; i--)
+            if(coords.Item1 != coords.Item2 && ((coords.Item1 == xyMax && coords.Item2 == 0) || (coords.Item2 == xyMax && coords.Item1 == 0)))
+            {
+                return CheckRightDiagonal(state);
+            }
+
+            if(coords.Item1 == (xyMax + 1) / 2)
+            {
+                return CheckLeftDiagonal(state) || CheckRightDiagonal(state);
+            }
+
+            return false;
+        }
+
+        private bool CheckLeftDiagonal(GridState state)
+        {
+            int numberOfNoughts = 0, numberOfCrosses = 0;
+
+            for(int i = 0; i < state.DiagonalLength; i++)
             {
                 GridIcon gridIcon = state.Grid[i, i];
 
-                int numberOfNoughts = 0, numberOfCrosses = 0;
+                UpdateNoughtsAndCrossesCount(gridIcon, ref numberOfNoughts, ref numberOfCrosses);
+            }
+
+            if (numberOfNoughts == state.DiagonalLength || numberOfCrosses == state.DiagonalLength)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool CheckRightDiagonal(GridState state)
+        {
+            int numberOfNoughts = 0, numberOfCrosses = 0;
+            int xMax = state.Grid.GetLength(0);
+
+            for(int i = 0; i < state.DiagonalLength; i++)
+            {
+                GridIcon gridIcon = state.Grid[xMax - i, i];
 
                 UpdateNoughtsAndCrossesCount(gridIcon, ref numberOfNoughts, ref numberOfCrosses);
+            }
 
-                if (numberOfCrosses == diagonalLength || numberOfNoughts == diagonalLength)
-                {
-                    return true;
-                }
+            if(numberOfNoughts == state.DiagonalLength || numberOfCrosses == state.DiagonalLength)
+            {
+                return true;
             }
 
             return false;
