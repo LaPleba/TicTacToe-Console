@@ -121,9 +121,9 @@ namespace TestProject
                 $"enter your coordinates (e.g. A2)");
         }
 
-        private bool CheckForWinner(GridState state)
+        private bool CheckForWinner(GridState state, (int, int) coordinates)
         {
-            if (CheckXAxisForWinner(state) || CheckYAxisForWinner(state) || CheckDiagonalsForWinner(state))
+            if (CheckXAxisForWinner(state, coordinates.Item2) || CheckYAxisForWinner(state) || CheckDiagonalsForWinner(state))
             {
                 return true;
             }
@@ -131,44 +131,39 @@ namespace TestProject
             return false;
         }
 
-        private bool CheckYAxisForWinner(GridState state)
+        private bool CheckXAxisForWinner(GridState state, int yCoordinate)
         {
-            for (int x = 0; x < state.Grid.GetLength(0); x++)
+            int numberOfCrosses = 0, numberOfNoughts = 0;
+
+            for (int x = 0; x < state.Grid.GetLength(1); x++)
             {
-                int numberOfCrosses = 0, numberOfNoughts = 0;
+                GridIcon gridIcon = state.Grid[x, yCoordinate];
+                UpdateNoughtsAndCrossesCount(gridIcon, ref numberOfNoughts, ref numberOfCrosses);
+            }
 
-                for (int y = 0; y < state.Grid.GetLength(1); y++)
-                {
-                    GridIcon gridIcon = state.Grid[x, y];
-                    UpdateNoughtsAndCrossesCount(gridIcon, ref numberOfNoughts, ref numberOfCrosses);
-                }
-
-                if (numberOfCrosses == state.Grid.GetLength(1) || numberOfNoughts == state.Grid.GetLength(1))
-                {
-                    return true;
-                }
+            if (numberOfCrosses == state.Grid.GetLength(1) || numberOfNoughts == state.Grid.GetLength(1))
+            {
+                return true;
             }
 
             return false;
         }
 
-        private bool CheckXAxisForWinner(GridState state)
+        private bool CheckYAxisForWinner(GridState state, int xCoordinate)
         {
-            for (int y = 0; y < state.Grid.GetLength(0); y++)
+            int numberOfCrosses = 0, numberOfNoughts = 0;
+
+            for (int y = 0; y < state.Grid.GetLength(1); y++)
             {
-                int numberOfCrosses = 0, numberOfNoughts = 0;
-
-                for (int x = 0; x < state.Grid.GetLength(1); x++)
-                {
-                    GridIcon gridIcon = state.Grid[x, y];
-                    UpdateNoughtsAndCrossesCount(gridIcon, ref numberOfNoughts, ref numberOfCrosses);
-                }
-
-                if (numberOfCrosses == state.Grid.GetLength(1) || numberOfNoughts == state.Grid.GetLength(1))
-                {
-                    return true;
-                }
+                GridIcon gridIcon = state.Grid[xCoordinate, y];
+                UpdateNoughtsAndCrossesCount(gridIcon, ref numberOfNoughts, ref numberOfCrosses);
             }
+
+            if (numberOfCrosses == state.Grid.GetLength(1) || numberOfNoughts == state.Grid.GetLength(1))
+            {
+                return true;
+            }
+
 
             return false;
         }
