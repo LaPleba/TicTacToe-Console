@@ -28,7 +28,7 @@ namespace TestProject
 
         private void GameLoop(GridState state)
         {
-            while (true)
+            for(int i = 1; i <= state.Grid.Length; i++)
             {
                 string? playerResponse = Console.ReadLine()?.ToUpper();
 
@@ -85,7 +85,13 @@ namespace TestProject
 
                 if (CheckForWinner(state, coords))
                 {
-                    EndGame(state);
+                    EndGameWin(state);
+                    break;
+                }
+
+                if(i == state.Grid.Length)
+                {
+                    EndGameDraw();
                     break;
                 }
 
@@ -95,13 +101,23 @@ namespace TestProject
             }
         }
 
-        private void EndGame(GridState state)
+        private void EndGameWin(GridState state)
         {
             Console.Clear();
 
             string winnerName = state.IsPlayer1Playing ? "Player 1 (Crosses)" : "Player 2 (Noughts)";
 
             Console.WriteLine($"Congratulations {winnerName}, you have won the game!!!");
+            Console.WriteLine("\nPress any key to end the game");
+
+            Console.ReadKey();
+        }
+
+        private void EndGameDraw()
+        {
+            Console.Clear();
+
+            Console.WriteLine("Unfortunately, the game has ended in a draw");
             Console.WriteLine("\nPress any key to end the game");
 
             Console.ReadKey();
