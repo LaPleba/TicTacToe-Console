@@ -45,7 +45,7 @@ namespace TestProject
 				{
 					if (x == 0)
 					{
-						rowString += $"{y + 1} |";
+						rowString += $"{ySize - y} |";
                         rowFinaliser += "  +---";
                     }
 					else
@@ -53,7 +53,7 @@ namespace TestProject
 						rowFinaliser += "+---";
 					}
 
-					switch(state.Grid[x, y])
+					switch(state.Grid[x, ySize - y - 1])
 					{
 						case GridIcon.None:
 							rowString += "   |";
