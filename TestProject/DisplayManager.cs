@@ -45,7 +45,7 @@ namespace TestProject
 				{
 					if (x == 0)
 					{
-						rowString += $"{y + 1} |";
+						rowString += $"{ySize - y} |";
                         rowFinaliser += "  +---";
                     }
 					else
