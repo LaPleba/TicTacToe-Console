@@ -89,6 +89,11 @@ namespace TestProject
 
 			Console.WriteLine(letterCoords);
 		}
+
+		public void ShowTitle()
+		{
+			Console.ReadKey();
+		}
 	}
 }
 
