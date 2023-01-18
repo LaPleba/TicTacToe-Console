@@ -123,8 +123,8 @@ namespace TestProject
 
         private bool CheckForWinner(GridState state, (int, int) coordinates)
         {
-            if (CheckXAxisForWinner(state, coordinates.Item1) ||
-                CheckYAxisForWinner(state, coordinates.Item2) ||
+            if (CheckXAxisForWinner(state, coordinates.Item2) ||
+                CheckYAxisForWinner(state, coordinates.Item1) ||
                 CheckDiagonalsForWinner(state, coordinates))
             {
                 return true;
