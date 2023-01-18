@@ -125,7 +125,7 @@ namespace TestProject
         {
             if (CheckXAxisForWinner(state, coordinates.Item1) ||
                 CheckYAxisForWinner(state, coordinates.Item2) ||
-                CheckDiagonalsForWinner(state))
+                CheckDiagonalsForWinner(state, coordinates))
             {
                 return true;
             }
