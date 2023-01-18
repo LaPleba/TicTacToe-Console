@@ -176,7 +176,7 @@ namespace TestProject
             {
                 return false;
             }
-            int xyMax = state.Grid.GetLength(0); //For there to be a diagonal, x and y max must be the same
+            int xyMax = state.Grid.GetLength(0) - 1; //For there to be a diagonal, x and y max must be the same
 
             if(coords.Item1 == coords.Item2 && (coords.Item1 == 0 || coords.Item1 == xyMax))
             {
@@ -218,7 +218,7 @@ namespace TestProject
         private bool CheckRightDiagonal(GridState state)
         {
             int numberOfNoughts = 0, numberOfCrosses = 0;
-            int xMax = state.Grid.GetLength(0);
+            int xMax = state.Grid.GetLength(0) - 1;
 
             for(int i = 0; i < state.DiagonalLength; i++)
             {
