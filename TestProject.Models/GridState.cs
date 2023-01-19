@@ -10,7 +10,7 @@ public class GridState
 
     public GridState(int xSize, int ySize)
     {
-        Grid = new GridIcon[3, 3];
+        Grid = new GridIcon[xSize, ySize];
         DiagonalLength = Grid.GetLength(0) == Grid.GetLength(1) ? Grid.GetLength(0) : null;
     }
 }
