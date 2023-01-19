@@ -20,6 +20,34 @@ namespace TestProject
 			Console.Clear();
 		}
 
+		public (int, int) RequestGridSize()
+		{
+			Console.WriteLine("Please enter a grid width");
+
+			int width = GetAxisLengthFromUser("Error: please enter a valid width number");
+
+			Console.WriteLine("Please enter a grid height");
+
+			int height = GetAxisLengthFromUser("Error: please enter a valid height number");
+
+			return (width, height);
+		}
+
+		/// <param name="errorString">The error to return to the user if they enter an incorrect value</param>
+		private int GetAxisLengthFromUser (string errorString = "Error: enter a valid number")
+		{
+			string? input = Console.ReadLine();
+			int output;
+
+			while (!int.TryParse(input, out output) || string.IsNullOrEmpty(input))
+			{
+				Console.WriteLine(errorString);
+				input = Console.ReadLine();
+			}
+
+			return output;
+		}
+
 		public void DisplayCurrentGridState(GridState state)
 		{
 			int xSize = state.Grid.GetLength(0);
