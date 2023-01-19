@@ -19,7 +19,9 @@ namespace TestProject
 
         public void BeginGame()
         {
-            GridState state = gridGenerator.GenerateGrid(3, 3);
+            (int, int) gridSize = displayManager.RequestGridSize();
+
+            GridState state = gridGenerator.GenerateGrid(gridSize.Item1, gridSize.Item2);
 
             ShowCurrentGameState(state);
 
