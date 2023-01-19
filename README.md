@@ -2,7 +2,7 @@
 A simple tic-tac-toe game built using the console in .NET 7
 
 ## Getting Started
-When complete this section will contain instructions on how to download and run this application
+To get started, head to the releases page and download the .ZIP file from the latest release. Extract the zip to a location of your choice and run the TestProject executable
 
 ## How To Play
 Once the game has begun following the title screen, you should see the following screen:
