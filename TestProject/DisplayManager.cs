@@ -7,6 +7,19 @@ namespace TestProject
 {
 	public class DisplayManager : IDisplayManager
 	{
+		public void ShowStartScreen()
+		{
+			Console.WriteLine("  _______         ______              ______");
+			Console.WriteLine(" /_  __(_)____   /_  __/___ ______   /_  __/___  ___ ");
+			Console.WriteLine(@"  / / / / ___/    / / / __ `/ ___/    / / / __ \/ _ \");
+			Console.WriteLine(" / / / / /__     / / / /_/ / /__     / / / /_/ /  __/");
+			Console.WriteLine(@"/_/ /_/\___/    /_/  \__,_/\___/    /_/  \____/\___/");
+			Console.WriteLine("\n            ---- By LaPleba ----");
+			Console.WriteLine("\nPress any key to continue");
+			Console.ReadKey();
+			Console.Clear();
+		}
+
 		public void DisplayCurrentGridState(GridState state)
 		{
 			int xSize = state.Grid.GetLength(0);

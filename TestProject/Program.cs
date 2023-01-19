@@ -12,7 +12,10 @@ using IHost host = Host.CreateDefaultBuilder(args)
     })
     .Build();
 
-var gameManager = new GameManager(host.Services.GetRequiredService<IGridGen>(),
-                                  host.Services.GetRequiredService<IDisplayManager>());
+var displayManager = host.Services.GetRequiredService<IDisplayManager>();
 
+var gameManager = new GameManager(host.Services.GetRequiredService<IGridGen>(),
+                                  displayManager);
+
+displayManager.ShowStartScreen();
 gameManager.BeginGame();
