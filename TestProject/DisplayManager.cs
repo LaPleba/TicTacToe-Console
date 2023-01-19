@@ -45,6 +45,8 @@ namespace TestProject
 				input = Console.ReadLine();
 			}
 
+			Console.Clear();
+
 			return output;
 		}
 
