@@ -118,12 +118,9 @@ namespace TestProject
 
             var response = Console.ReadLine()?.ToUpper();
 
-            if (response == "Y")
+            if (response != "Y")
             {
-                Console.ReadKey();
-            }
-            else
-            {
+                Console.Clear();
                 BeginGame();
             }
         }
