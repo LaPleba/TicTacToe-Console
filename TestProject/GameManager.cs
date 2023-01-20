@@ -110,7 +110,16 @@ namespace TestProject
             Console.WriteLine($"Congratulations {winnerName}, you have won the game!!!");
             Console.WriteLine("\nPress any key to end the game");
 
-            Console.ReadKey();
+            var response = Console.ReadLine()?.ToUpper();
+            
+            if (response == "Y")
+            {
+                Console.ReadKey();
+            }
+            else
+            {
+                BeginGame();
+            }
         }
 
         private void EndGameDraw()
@@ -120,7 +129,16 @@ namespace TestProject
             Console.WriteLine("Unfortunately, the game has ended in a draw");
             Console.WriteLine("\nPress any key to end the game");
 
-            Console.ReadKey();
+            var response = Console.ReadLine()?.ToUpper();
+
+            if (response == "Y")
+            {
+                Console.ReadKey();
+            }
+            else
+            {
+                BeginGame();
+            }
         }
 
         private void ShowCurrentGameState(string message, GridState state)
