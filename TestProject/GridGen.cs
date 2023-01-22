@@ -1,5 +1,4 @@
-﻿using System;
-using TestProject.Interfaces;
+﻿using TestProject.Interfaces;
 using TestProject.Models;
 using TestProject.Models.Enums;
 
