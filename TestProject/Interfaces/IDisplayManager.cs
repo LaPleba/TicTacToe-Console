@@ -6,6 +6,7 @@ namespace TestProject.Interfaces
 	public interface IDisplayManager
 	{
 		void ShowStartScreen();
+		(int, int) RequestGridSize();
 		void DisplayCurrentGridState(GridState state);
 	}
 }

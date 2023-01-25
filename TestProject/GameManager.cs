@@ -17,7 +17,9 @@ namespace TestProject
 
         public void BeginGame()
         {
-            GridState state = gridGenerator.GenerateGrid(3, 3);
+            (int, int) gridSize = displayManager.RequestGridSize();
+
+            GridState state = gridGenerator.GenerateGrid(gridSize.Item1, gridSize.Item2);
 
             ShowCurrentGameState(state);
 
@@ -151,7 +153,7 @@ namespace TestProject
         {
             int numberOfCrosses = 0, numberOfNoughts = 0;
 
-            for (int x = 0; x < state.Grid.GetLength(1); x++)
+            for (int x = 0; x < state.Grid.GetLength(0); x++)
             {
                 GridIcon gridIcon = state.Grid[x, yCoordinate];
                 UpdateNoughtsAndCrossesCount(gridIcon, ref numberOfNoughts, ref numberOfCrosses);
