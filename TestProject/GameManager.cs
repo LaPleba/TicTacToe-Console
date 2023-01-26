@@ -118,9 +118,9 @@ namespace TestProject
         {
             Console.WriteLine("\nDo you want to stop playing (Y). Press any key to play a new game");
 
-            var response = Console.ReadLine()?.ToUpper();
+            var response = Console.ReadKey().Key;
 
-            if (response != "Y")
+            if (response != ConsoleKey.Y)
             {
                 Console.Clear();
                 BeginGame();
