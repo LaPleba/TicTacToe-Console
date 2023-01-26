@@ -28,9 +28,7 @@ namespace TestProject
 
         private void GameLoop(GridState state)
         {
-            var gridIconPlaying = state.IsPlayer1Playing ? GridIcon.Cross : GridIcon.Circle;
-
-            for (int i = 1; i <= state.Grid.Length; i++)
+            for(int i = 1; i <= state.Grid.Length; i++)
             {
                 string? playerResponse = Console.ReadLine()?.ToUpper();
 
