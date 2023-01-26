@@ -116,7 +116,7 @@ namespace TestProject
 
         private void AskUserToContinueOrStopPlaying()
         {
-            Console.WriteLine("\nDo you want to stop playing (Y). Press any key to play a new game");
+            Console.WriteLine("\nDo you want to stop playing (Y). Press any other key to play a new game");
 
             var response = Console.ReadKey().Key;
 
