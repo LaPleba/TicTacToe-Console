@@ -108,9 +108,21 @@ namespace TestProject
             string winnerName = state.IsPlayer1Playing ? "Player 1 (Crosses)" : "Player 2 (Noughts)";
 
             Console.WriteLine($"Congratulations {winnerName}, you have won the game!!!");
-            Console.WriteLine("\nPress any key to end the game");
 
-            Console.ReadKey();
+            AskUserToContinueOrStopPlaying();
+        }
+
+        private void AskUserToContinueOrStopPlaying()
+        {
+            Console.WriteLine("\nDo you want to stop playing (Y). Press any other key to play a new game");
+
+            var response = Console.ReadKey().Key;
+
+            if (response != ConsoleKey.Y)
+            {
+                Console.Clear();
+                BeginGame();
+            }
         }
 
         private void EndGameDraw()
@@ -118,9 +130,8 @@ namespace TestProject
             Console.Clear();
 
             Console.WriteLine("Unfortunately, the game has ended in a draw");
-            Console.WriteLine("\nPress any key to end the game");
-
-            Console.ReadKey();
+            
+            AskUserToContinueOrStopPlaying();
         }
 
         private void ShowCurrentGameState(string message, GridState state)
